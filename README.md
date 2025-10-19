@@ -6,16 +6,12 @@ Made purely for creative, educational, and spiritual exploration 🌺
 
 ---
 
-## 🎬 Preview (Video Demo)
+## 🎬 Video Demo
 
-[![Watch the video](https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg)](https://raw.githubusercontent.com/<your-username>/hanuman-meditation/main/HanumanJi.mp4)
+🎥 **Watch the demo here:**  
+[HanumanJi.mp4](https://github.com/AbhishekHosamani123/hanuman-aura/blob/main/HanumanJi.mp4)
 
-
-If the above link doesn’t auto-play, you can also click below 👇  
-
-<video src="https://raw.githubusercontent.com/<your-username>/hanuman-meditation/main/HanumanJi.mp4" 
-controls width="700"></video>
-
+*(If the link doesn’t auto-play, click “Download” or open it in a new tab.)*
 
 ---
 
