@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hanuman Meditation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Yatra+One&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+            background: #000;
+            font-family: 'Yatra One', cursive;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+        }
+
+        .hindi-text {
+            font-family: 'Yatra One', cursive;
+            color: white;
+            font-size: 2.5rem;
+            margin: 20px 0;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            background: transparent;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .design-container {
+            position: relative;
+            width: 800px;
+            height: 800px;
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform-style: preserve-3d;
+            transition: transform 0.3s ease;
+        }
+
+        #canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        #particles-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 15;
+        }
+
+        #hanuman-img {
+            position: absolute;
+            top: 55%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 450px;
+            z-index: 10;
+        }
+
+        .glow-circle {
+            position: absolute;
+            top: 55%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 520px;
+            height: 520px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 77, 0, 0.3) 0%, rgba(0, 0, 0, 0) 70%);
+            animation: pulse 2s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        .aura {
+            position: absolute;
+            top: 55%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, 
+                rgba(255, 165, 0, 0.1) 0%,
+                rgba(255, 69, 0, 0.1) 50%,
+                rgba(0, 0, 0, 0) 70%
+            );
+            animation: aura 4s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.3;
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.1);
+                opacity: 0.5;
+            }
+        }
+
+        @keyframes aura {
+            0%, 100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.1;
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.1);
+                opacity: 0.2;
+            }
+        }
+
+        .smoke {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(0deg, 
+                rgba(255, 69, 0, 0.1) 0%,
+                transparent 20%
+            );
+            filter: blur(20px);
+            z-index: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="hindi-text">तुम रक्षक काहे को डरना</div>
+    <div class="design-container">
+        <canvas id="canvas"></canvas>
+        <canvas id="particles-canvas"></canvas>
+        <div class="glow-circle"></div>
+        <img id="hanuman-img" src="HanumanJi.png" alt="Hanuman" />
+        <div class="aura"></div>
+        <div class="smoke" style="width: 100%; height: 100%;"></div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        
+        const particlesCanvas = document.getElementById('particles-canvas');
+        const particlesCtx = particlesCanvas.getContext('2d');
+
+        function resizeCanvas() {
+            const container = document.querySelector('.design-container');
+            canvas.width = container.offsetWidth;
+            canvas.height = container.offsetHeight;
+            particlesCanvas.width = container.offsetWidth;
+            particlesCanvas.height = container.offsetHeight;
+        }
+        resizeCanvas();
+
+        const centerX = canvas.width / 2;
+        const centerY = canvas.height / 2;
+        const maxRadius = Math.min(centerX, centerY) - 20;
+
+        let angleOffset = 0;
+
+        class Particle {
+            constructor() {
+                this.reset();
+            }
+
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = canvas.height + 10;
+                this.size = Math.random() * 3 + 1;
+                this.speedY = Math.random() * 3 + 1;
+                this.speedX = (Math.random() - 0.5) * 2;
+                this.color = `hsl(${Math.random() * 30 + 20}, 100%, 50%)`;
+                this.alpha = 1;
+            }
+
+            update() {
+                this.y -= this.speedY;
+                this.x += this.speedX;
+                this.alpha -= 0.005;
+                if (this.y < 0 || this.alpha <= 0) this.reset();
+            }
+
+            draw() {
+                particlesCtx.save();
+                particlesCtx.globalAlpha = this.alpha;
+                particlesCtx.beginPath();
+                particlesCtx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                particlesCtx.fillStyle = this.color;
+                particlesCtx.fill();
+                particlesCtx.restore();
+            }
+        }
+
+        const particles = Array(50).fill().map(() => new Particle());
+
+        function updateParticles() {
+            particlesCtx.clearRect(0, 0, particlesCanvas.width, particlesCanvas.height);
+            particles.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+        }
+
+        const drawBackground = () => {
+            const gradient = ctx.createRadialGradient(centerX, centerY, 10, centerX, centerY, maxRadius);
+            gradient.addColorStop(0, '#ff6a00');
+            gradient.addColorStop(0.2, '#ff4d00');
+            gradient.addColorStop(0.6, '#441500');
+            gradient.addColorStop(1, '#000000');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+        };
+
+        const drawChant = () => {
+            const mantra = 'राम ';
+            const rows = 4;
+            
+            const radiusMultipliers = {
+                1: 50,    // Innermost
+                2: 100,   // Second
+                3: 160,   // Third
+                4: 230    // Outermost
+            };
+
+            const textsPerCircle = {
+                1: 8,   // Innermost (reduced from 10)
+                2: 12,  // Second (reduced from 15)
+                3: 16,  // Third (reduced from 20)
+                4: 20   // Outermost (reduced from 24)
+            };
+
+            const fontSizes = {
+                1: 16,  // Slightly larger (was 14)
+                2: 26,  // Slightly larger (was 24)
+                3: 34,  // Slightly larger (was 32)
+                4: 42   // Slightly larger (was 40)
+            };
+
+            for (let r = 1; r <= rows; r++) {
+                const radius = radiusMultipliers[r];
+                const count = textsPerCircle[r];
+                
+                ctx.font = `${fontSizes[r]}px 'Yatra One'`;
+                
+                const color = r === 1 ? '#ffff00' : 
+                            r === 2 ? '#ffd700' :
+                            r === 3 ? '#ffa500' : 
+                            '#ff8c00';
+                            
+                ctx.fillStyle = color;
+                ctx.shadowColor = color;
+                ctx.shadowBlur = 25;
+                ctx.shadowOffsetX = 0;
+                ctx.shadowOffsetY = 0;
+
+                for (let i = 0; i < count; i++) {
+                    const angle = angleOffset + (i / count) * 2 * Math.PI;
+                    const x = centerX + Math.cos(angle) * radius;
+                    const y = centerY + Math.sin(angle) * radius;
+                    
+                    ctx.save();
+                    ctx.translate(x, y);
+                    ctx.rotate(angle + Math.PI / 2);
+                    ctx.fillText(mantra, 0, 0);
+                    ctx.restore();
+                }
+            }
+        };
+
+        function render() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawBackground();
+            drawChant();
+            updateParticles();
+        }
+
+        function animate() {
+            angleOffset += 0.007;
+            render();
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+
+        const container = document.querySelector('.design-container');
+        container.addEventListener('mousemove', (e) => {
+            const rect = container.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const rotateX = (y - rect.height / 2) / 50;
+            const rotateY = -(x - rect.width / 2) / 50;
+            
+            container.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+
+        container.addEventListener('mouseleave', () => {
+            container.style.transform = 'rotateX(0) rotateY(0)';
+        });
+
+        window.addEventListener('resize', () => {
+            resizeCanvas();
+        });
+    </script>
+</body>
+</html> 
