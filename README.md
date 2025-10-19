@@ -1,34 +1,31 @@
-# 🕉️ Hanuman Meditation — A Hobby Project of Divine Visualization
+# 🕉️ Hanuman Meditation – A Calm Visual Project  
 
-A peaceful hobby project built with pure **HTML, CSS, and JavaScript (Canvas)**.  
-It features **Lord Hanuman Ji** surrounded by glowing **राम (Ram)** chants revolving in a meditative motion — representing devotion, energy, and focus.  
-Made purely for creative, educational, and spiritual exploration 🌺
-
----
-
-## 🎬 Video Demo
-
-🎥 **Watch the demo here:**  
-[HanumanJi.mp4](https://github.com/AbhishekHosamani123/hanuman-aura/blob/main/HanumanJi.mp4)
-
-*(If the link doesn’t auto-play, click “Download” or open it in a new tab.)*
+This is a small **hobby project** built for relaxation and spiritual connection.  
+It features a **peaceful Hanuman Ji meditation animation** designed using simple web technologies.  
 
 ---
 
-## ✨ Features
-
-- Revolving **राम** mantra text animation in circular orbits  
-- Smooth glowing **aura and pulse effects** around Hanuman Ji  
-- Floating **fire-like particles** using canvas  
-- Mouse movement-based **3D tilt rotation**  
-- Fully **HTML + CSS + Canvas**, no frameworks  
-- Peaceful orange & gold gradient aesthetic  
+## 🌸 About the Project  
+This project represents **a personal creative experiment** combining art, meditation, and front-end creativity.  
+It’s not meant for commercial use — just something I built for peace of mind and artistic expression.  
 
 ---
 
-## 🚀 How to Run Locally
+## 🎥 Demo  
+Here’s the GIF version of the animation 👇  
 
-1. **Clone this repo**
+![Hanuman Ji Meditation](HanumanJiGIF.gif)
+
+---
+
+## 💻 Tech Stack  
+- HTML5  
+- CSS3  
+- JavaScript (optional for animation)  
+
+---
+
+## ⚙️ How to Run  
+1. Clone the repository:  
    ```bash
    git clone https://github.com/<your-username>/hanuman-meditation.git
-   cd hanuman-meditation
