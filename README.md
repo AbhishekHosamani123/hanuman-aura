@@ -1,42 +1,35 @@
-# 🕉️ Hanuman Meditation — A Hobby Canvas Animation Project
+# 🕉️ Hanuman Meditation — A Hobby Project of Divine Visualization
 
-**Hanuman Meditation** is a personal hobby project created for peace, focus, and creative coding practice.  
-It visualizes Lord Hanuman surrounded by glowing **"राम" (Ram)** chants revolving around him in a meditative aura — all built using pure **HTML, CSS, and JavaScript Canvas** (no frameworks).
-
----
-
-## 🌟 Project Overview
-
-This small web experiment was made out of passion for spirituality and animation.  
-The goal is to combine **divine visuals** with **modern web design** — a digital meditation art piece.
-
-**Features:**
-- Revolving **राम** (Ram) text animation using Canvas.  
-- Glowing aura and energy pulse effects.  
-- Floating fire particles for atmosphere.  
-- Mouse-based 3D rotation for depth.  
-- Smooth meditation-like visuals made only with HTML/CSS/JS.
+A peaceful hobby project built with pure **HTML, CSS, and JavaScript (Canvas)**.  
+It features **Lord Hanuman Ji** surrounded by glowing **राम (Ram)** chants revolving in a meditative motion — representing devotion, energy, and focus.  
+Made purely for creative, educational, and spiritual exploration 🌺
 
 ---
 
-## 🎨 Demo Preview
+## 🎬 Preview (Video Demo)
 
-🎥 **Watch Live Demo (HTML video preview below)**  
-Click below to open directly from the repo:
+https://github.com/<your-username>/hanuman-meditation/blob/main/HanumanJi.mp4
 
-👉 [Open Final_Hanumn_ji.html](./Final_Hanumn_ji.html)
+If the above link doesn’t auto-play, you can also click below 👇  
 
-Or see inline preview (if supported by your viewer):
-
-<video src="./Final_Hanumn_ji.html" width="600" controls>
-Your browser does not support embedded videos.
-</video>
+<video src="HanumanJi.mp4" controls width="700"></video>
 
 ---
 
-## 🛠️ How to Run Locally
+## ✨ Features
 
-1. Clone this repository:
+- Revolving **राम** mantra text animation in circular orbits  
+- Smooth glowing **aura and pulse effects** around Hanuman Ji  
+- Floating **fire-like particles** using canvas  
+- Mouse movement-based **3D tilt rotation**  
+- Fully **HTML + CSS + Canvas**, no frameworks  
+- Peaceful orange & gold gradient aesthetic  
+
+---
+
+## 🚀 How to Run Locally
+
+1. **Clone this repo**
    ```bash
    git clone https://github.com/<your-username>/hanuman-meditation.git
    cd hanuman-meditation
