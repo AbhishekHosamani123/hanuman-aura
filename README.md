@@ -8,11 +8,14 @@ Made purely for creative, educational, and spiritual exploration 🌺
 
 ## 🎬 Preview (Video Demo)
 
-https://github.com/<your-username>/hanuman-meditation/blob/main/HanumanJi.mp4
+[![Watch the video](https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg)](https://raw.githubusercontent.com/<your-username>/hanuman-meditation/main/HanumanJi.mp4)
+
 
 If the above link doesn’t auto-play, you can also click below 👇  
 
-<video src="HanumanJi.mp4" controls width="700"></video>
+<video src="https://raw.githubusercontent.com/<your-username>/hanuman-meditation/main/HanumanJi.mp4" 
+controls width="700"></video>
+
 
 ---
 
